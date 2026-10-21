@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduManage School Dashboard</title>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <h2>🎓 (school)Manage</h2>
+    <p class="sub">SCHOOL PORTAL</p>
+    <a class="active" href="#dashboard">▦ Dashboard</a>
+    <a href="#students">👨‍🎓 Students</a>
+    <a href="#staff">👨‍💼 Staff & Salary</a>
+    <a href="#fees">💰 Fee Records student details</a>
+    <button id="themeBtn">🌙 Dark Mode</button>
+</div>
+
+<main class="main" id="dashboard">
+    <header>
+        <button id="menuBtn" aria-label="Open menu">☰</button>
+        <div>
+            <h2>School Dashboard</h2>
+            <p>Welcome back, Admin!</p>
+        </div>
+        <span class="admin">Admin 👤</span>
+    </header>
+
+    <section class="welcome">
+        <div>
+            <p>SCHOOL MANAGEMENT SYSTEM</p>
+            <h1>Dashboard Overview 👋</h1>
+            <span>Manage your school in one place.</span>
+        </div>
+        <button onclick="showFeeForm()">+ Add Fee</button>
+    </section>
+
+    <section class="stats">
+        <div class="card blue">
+            <p>Total Students</p>
+            <h2 id="totalStudents">0</h2>
+            <span>Registered students</span>
+        </div>
+
+
+
+
+
+        <div class="card purple">
+            <p>Total Staff</p>
+            <h2 id="totalstaff">0</h2>
+            <span>Teaching staff</span>
+        </div>
+        <div class="card green">
+            <p>Total Fees Collected</p>
+            <h2 id="totalSales">Rs. 0</h2>
+            <span>Paid fees only</span>
+        </div>
+        <div class="card orange">
+            <p>Outstanding Fees</p>
+            <h2 id="pendingFees">Rs. 0</h2>
+            <span>Unpaid fees</span>
+        </div>
+    </section>
+
+    <section class="panel" id="fees">
+        <div class="panel-head">
+            <div>
+                <h2>Fee Records</h2>
+                <p>Add and manage school fee payments.</p>
+            </div>
+            <button onclick="showFeeForm()">+ Add Fee</button>
+        </div>
+
+        <form id="feeForm" class="fee-form hidden">
+            <input id="studentName" placeholder="Student name" required>
+            <input id="feeAmount" type="number" min="1"
+                   placeholder="Amount (Rs.)" required>
+            <input id="feeMonth" placeholder="Fee month" required>
+            <select id="feeStatus">
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+            <button type="submit">Save Fee</button>
+        </form>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Month</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="feeTable"></tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+
+
+
+<section class="panel staff-panel" id="staff">
+
+    <div class="panel-head">
+        <div>
+            <h2>👨‍💼 Staff Management & Salary</h2>
+            <p>Manage staff details and monthly salary payments.</p>
+        </div>
+        <button type="button" onclick="showStaffForm()">
+            + Add Staff Salary
+        </button>
+    </div>
+
+    <!-- Salary Summary -->
+    <div class="staff-stats">
+        <div class="salary-card">
+            <p>Total Staff</p>
+            <h2 id="staffCount">0</h2>
+        </div>
+
+        <div class="salary-card">
+            <p>Salary Paid</p>
+            <h2 id="salaryPaid">Rs. 0</h2>
+        </div>
+
+        <div class="salary-card">
+            <p>Salary Pending</p>
+            <h2 id="salaryPending">Rs. 0</h2>
+        </div>
+    </div>
+
+    <!-- Add Salary Form -->
+    <form id="staffForm" class="fee-form hidden">
+
+        <input
+            type="text"
+            id="staffName"
+            placeholder="Staff name"
+            required
+        >
+
+        <input
+            type="text"
+            id="staffRole"
+            placeholder="Designation (e.g. Teacher)"
+            required
+        >
+
+        <input
+            type="number"
+            id="staffAmount"
+            placeholder="Monthly salary (Rs.)"
+            min="1"
+            required
+        >
+
+        <input
+            type="month"
+            id="salaryMonth"
+            required
+        >
+
+        <select id="salaryStatus">
+            <option value="Paid">Paid</option>
+            <option value="Unpaid">Unpaid</option>
+        </select>
+
+        <button type="submit">Save Salary</button>
+
+    </form>
+
+    <!-- Staff Salary Table -->
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Staff Name</th>
+                    <th>Designation</th>
+                    <th>Month</th>
+                    <th>Salary</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="staffTable"></tbody>
+        </table>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+    <footer>© 2026 EduManage | School Management System</footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
